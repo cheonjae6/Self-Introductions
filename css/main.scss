@@ -1,0 +1,176 @@
+$mainBackgroundColor : rgb(219, 241, 255);
+$sectionBackgroundColor : rgb(255, 255, 255);
+$borderColor : rgb(227, 227, 227);
+
+* {
+  font-family: sans-serif;
+}
+
+@mixin flex($direction, $justify, $align, $wrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin section($borderRadius) {
+  background-color: $sectionBackgroundColor;
+  border: none;
+  margin: 40px 0;
+  border-radius: $borderRadius;
+}
+
+button {
+  background-color: rgb(153, 231, 132);
+  border: none;
+  border-radius: 5px;
+  padding: 5px 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  #wrap {
+    width: 100%;
+    max-width: 1000px;
+    background-color: $mainBackgroundColor;
+    padding: 1px;
+    .container {
+      width: 90%;
+      margin: 40px auto;
+      #section1 {
+        width: 100%;
+        padding: 1px;
+        @include section(10px);
+        .section-inner-container {
+          width: 90%;
+          margin: 20px auto;
+          @include flex(column, center, flex-start, nowrap);
+          .top {
+            @include flex(row, center, center, nowrap);
+            img {
+              display: block;
+              width: 100px;
+              border-radius: 50%;
+              margin-right: 20px;
+            }
+            ul {
+              li {padding: 2.5px 0;}
+            }
+          }
+          .bottom {
+            @include flex(row, flex-start, flex-start, nowrap);
+            ul {
+              margin: 0 45px 0 0;
+              li {
+                padding: 5px 0;
+              }
+            }
+          }
+        }
+      }
+      #section2 {
+        width: 100%;
+        padding: 1px;
+        @include section(8px);
+        .top, .bottom {
+          margin: 20px;
+        }
+        .top {
+          border-bottom: 2px solid rgb(227, 227, 227);
+        }
+        .bottom {
+          ul {
+            @include flex(row, center, center, wrap);
+            li {
+              display: inline-block;
+              border: 2px solid rgb(227, 227, 227);
+              border-radius: 20px;
+              padding: 5px 10px;
+              margin: 5px;
+            }
+          }
+        }
+      }
+      #section3 {
+        width: 100%;
+        padding: 1px;
+        @include section(8px);
+        .top, .bottom {
+          width: 90%;
+          margin: 20px auto;
+        }
+        .top {
+          border-bottom: 2px solid rgb(227, 227, 227);
+          ul {
+            @include flex(row, center, center, wrap);
+            li {
+              display: inline-block;
+              border: 2px solid rgb(227, 227, 227);
+              border-radius: 20px;
+              padding: 5px 10px;
+              margin: 5px;
+            }
+          }
+        }
+        .bottom {
+          .image {
+            display: block;
+            width: 100%;
+          }
+        }
+        .hobby {
+          position: relative;
+          margin: 20px;
+          width: 200px;
+          height: 200px;
+          img {
+            width: 100%;
+            height: 120px;
+            position: absolute;
+            display: block;
+          }
+          .text {
+            width: 100%;
+            height: 120px;
+            position: absolute;
+            color: #fff;
+            background-color: black;
+            opacity: 0;
+            transition: opacity .5s;
+            p {
+              margin: 50px 10px;
+            }
+            &:hover {
+              opacity: 0.5;
+            }
+          }
+        }
+      }
+      #section4 {
+        width: 100%;
+        @include section(8px);
+        padding: 1px;
+        @include flex(column, center, center, nowrap);
+        .text {
+          width: 90%;
+          margin: 0 auto;
+          h2 {
+            margin: 20px 0;
+          }
+        }
+        img {
+          display: block;
+          width: 150px;
+          border-radius: 50%;
+          margin: 20px 0;
+        }
+      }
+    }
+  }
+}

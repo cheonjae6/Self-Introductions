@@ -1,0 +1,14 @@
+@mixin listStyleColor($color) {
+  background-color: $color;
+}
+body {
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
